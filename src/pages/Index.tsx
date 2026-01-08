@@ -1,43 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FlaskConical, Microscope, Atom, Dna, Sparkles } from 'lucide-react';
+import { Microscope } from 'lucide-react';
 import LabScene from '@/components/3d/LabScene';
 import TopicCard from '@/components/TopicCard';
-import TopicContent from '@/components/TopicContent';
-
-const topics = [
-  {
-    id: 'chemistry',
-    title: 'Chemistry',
-    description: 'Explore the science of matter, chemical reactions, and the building blocks of everything around us.',
-    icon: FlaskConical,
-    color: '#14b8a6',
-  },
-  {
-    id: 'biology',
-    title: 'Biology',
-    description: 'Discover the fascinating world of living organisms, from cells to ecosystems.',
-    icon: Dna,
-    color: '#a855f7',
-  },
-  {
-    id: 'physics',
-    title: 'Physics',
-    description: 'Understand the fundamental laws that govern the universe, from gravity to quantum mechanics.',
-    icon: Sparkles,
-    color: '#3b82f6',
-  },
-  {
-    id: 'atoms',
-    title: 'Atomic Structure',
-    description: 'Dive into the microscopic world of atoms, electrons, and the particles that make up matter.',
-    icon: Atom,
-    color: '#f97316',
-  },
-];
+import SubtopicList from '@/components/SubtopicList';
+import { topics, Topic } from '@/data/topics';
 
 export default function Index() {
-  const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
+  const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null);
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -100,7 +70,7 @@ export default function Index() {
                   icon={topic.icon}
                   color={topic.color}
                   delay={0.4 + index * 0.1}
-                  onClick={() => setSelectedTopic(topic.id)}
+                  onClick={() => setSelectedTopic(topic)}
                 />
               ))}
             </div>
@@ -111,14 +81,14 @@ export default function Index() {
               transition={{ delay: 1 }}
               className="mt-8 text-sm text-muted-foreground text-center lg:text-left"
             >
-              💡 Click on any topic card to learn more, or interact with the 3D lab scene!
+              💡 Click on any topic to explore subtopics and dive deeper into the science!
             </motion.p>
           </motion.div>
         </div>
       </div>
 
-      {/* Topic Content Modal */}
-      <TopicContent topicId={selectedTopic} onClose={() => setSelectedTopic(null)} />
+      {/* Subtopic Selection Modal */}
+      <SubtopicList topic={selectedTopic} onClose={() => setSelectedTopic(null)} />
     </div>
   );
 }
