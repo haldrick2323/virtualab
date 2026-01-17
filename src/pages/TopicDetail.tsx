@@ -1,9 +1,10 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, BookOpen, Lightbulb, FlaskConical, Sparkles } from 'lucide-react';
+import { ArrowLeft, BookOpen, Lightbulb, FlaskConical, Sparkles, FileText } from 'lucide-react';
 import { getTopic, getSubtopic } from '@/data/topics';
 import TopicScene from '@/components/3d/TopicScene';
 import { Button } from '@/components/ui/button';
+import Quiz from '@/components/Quiz';
 
 export default function TopicDetail() {
   const { topicId, subtopicId } = useParams<{ topicId: string; subtopicId: string }>();
@@ -94,6 +95,29 @@ export default function TopicDetail() {
               </p>
             </div>
 
+            {/* Detailed Content */}
+            {'detailedContent' in subtopic && subtopic.detailedContent && (
+              <div className="glass-card p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <FileText className="w-5 h-5" style={{ color: subtopic.color }} />
+                  <h2 className="font-display text-xl font-semibold text-foreground">In-Depth Discussion</h2>
+                </div>
+                <div className="text-muted-foreground leading-relaxed space-y-4">
+                  {subtopic.detailedContent.split('\n\n').map((paragraph, index) => (
+                    <motion.p
+                      key={index}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 + index * 0.1 }}
+                      className="text-sm"
+                    >
+                      {paragraph}
+                    </motion.p>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Key Facts */}
             <div className="glass-card p-6">
               <div className="flex items-center gap-3 mb-4">
@@ -157,6 +181,20 @@ export default function TopicDetail() {
                 {subtopic.funFact}
               </p>
             </motion.div>
+
+            {/* Quiz Section */}
+            {'quiz' in subtopic && subtopic.quiz && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1 }}
+              >
+                <Quiz 
+                  questions={subtopic.quiz} 
+                  topicColor={subtopic.color}
+                />
+              </motion.div>
+            )}
 
             {/* Navigation hint */}
             <p className="text-center text-sm text-muted-foreground pt-4">
