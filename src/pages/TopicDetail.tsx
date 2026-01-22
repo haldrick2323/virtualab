@@ -2,10 +2,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Lightbulb, FlaskConical, Sparkles, FileText } from 'lucide-react';
 import { getTopic, getSubtopic } from '@/data/topics';
-import TopicScene from '@/components/3d/TopicScene';
+import InteractiveModelWrapper from '@/components/3d/InteractiveModelWrapper';
 import { Button } from '@/components/ui/button';
 import Quiz from '@/components/Quiz';
-
 export default function TopicDetail() {
   const { topicId, subtopicId } = useParams<{ topicId: string; subtopicId: string }>();
   const navigate = useNavigate();
@@ -52,8 +51,8 @@ export default function TopicDetail() {
 
       <div className="relative z-10 flex flex-col lg:flex-row min-h-[calc(100vh-80px)]">
         {/* 3D Scene Section */}
-        <div className="w-full lg:w-1/2 h-[40vh] lg:h-auto relative">
-          <TopicScene modelType={subtopic.modelType} color={subtopic.color} />
+        <div className="w-full lg:w-1/2 h-[50vh] lg:h-auto relative">
+          <InteractiveModelWrapper modelType={subtopic.modelType} color={subtopic.color} />
           
           {/* Title overlay */}
           <div className="absolute top-8 left-8 right-8 pointer-events-none">
