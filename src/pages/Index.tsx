@@ -11,10 +11,17 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Background gradient effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
+      {/* Laboratory-themed background */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-slate-100 via-slate-50 to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+        {/* Subtle grid pattern like lab tiles */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px'
+        }} />
+        {/* Light from window effect */}
+        <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-sky-100/30 to-transparent dark:from-sky-900/10" />
+        {/* Soft ambient glow */}
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-200/20 dark:bg-teal-900/10 rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 flex flex-col lg:flex-row min-h-screen">
