@@ -6,62 +6,62 @@
 
 @layer base {
   :root {
-    /* Science Lab Theme - Deep blues, teals, and warm accents */
-    --background: 220 25% 8%;
-    --foreground: 210 20% 95%;
+    /* Science Lab Theme - Light mode for laboratory environment */
+    --background: 210 20% 98%;
+    --foreground: 220 25% 15%;
 
-    --card: 220 20% 12%;
-    --card-foreground: 210 20% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 15%;
 
-    --popover: 220 20% 10%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 15%;
 
-    --primary: 175 70% 45%;
-    --primary-foreground: 220 25% 8%;
+    --primary: 175 70% 40%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 18%;
-    --secondary-foreground: 210 20% 90%;
+    --secondary: 210 15% 92%;
+    --secondary-foreground: 220 25% 20%;
 
-    --muted: 220 15% 20%;
-    --muted-foreground: 210 15% 60%;
+    --muted: 210 15% 90%;
+    --muted-foreground: 220 15% 40%;
 
-    --accent: 35 90% 55%;
-    --accent-foreground: 220 25% 8%;
+    --accent: 35 90% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
-    --destructive-foreground: 210 20% 95%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 22%;
-    --ring: 175 70% 45%;
+    --border: 210 15% 85%;
+    --input: 210 15% 88%;
+    --ring: 175 70% 40%;
 
     --radius: 0.75rem;
 
     /* Custom science colors */
-    --science-teal: 175 70% 45%;
-    --science-cyan: 185 65% 50%;
-    --science-blue: 210 80% 55%;
-    --science-purple: 270 60% 55%;
-    --science-orange: 35 90% 55%;
-    --science-green: 145 60% 45%;
+    --science-teal: 175 70% 40%;
+    --science-cyan: 185 65% 45%;
+    --science-blue: 210 80% 50%;
+    --science-purple: 270 60% 50%;
+    --science-orange: 35 90% 50%;
+    --science-green: 145 60% 40%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(175 70% 45%), hsl(210 80% 55%));
-    --gradient-accent: linear-gradient(135deg, hsl(35 90% 55%), hsl(15 80% 50%));
-    --gradient-glow: radial-gradient(ellipse at center, hsl(175 70% 45% / 0.15), transparent 70%);
+    --gradient-primary: linear-gradient(135deg, hsl(175 70% 40%), hsl(210 80% 50%));
+    --gradient-accent: linear-gradient(135deg, hsl(35 90% 50%), hsl(15 80% 45%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(175 70% 40% / 0.15), transparent 70%);
     
     /* Shadows */
-    --shadow-glow: 0 0 40px hsl(175 70% 45% / 0.3);
-    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.4);
+    --shadow-glow: 0 0 40px hsl(175 70% 40% / 0.25);
+    --shadow-card: 0 8px 32px hsl(220 25% 15% / 0.08);
 
-    --sidebar-background: 220 25% 10%;
-    --sidebar-foreground: 210 20% 90%;
-    --sidebar-primary: 175 70% 45%;
-    --sidebar-primary-foreground: 220 25% 8%;
-    --sidebar-accent: 220 20% 18%;
-    --sidebar-accent-foreground: 210 20% 90%;
-    --sidebar-border: 220 15% 20%;
-    --sidebar-ring: 175 70% 45%;
+    --sidebar-background: 210 20% 96%;
+    --sidebar-foreground: 220 25% 20%;
+    --sidebar-primary: 175 70% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 15% 92%;
+    --sidebar-accent-foreground: 220 25% 20%;
+    --sidebar-border: 210 15% 85%;
+    --sidebar-ring: 175 70% 40%;
   }
 
   .dark {
@@ -84,6 +84,15 @@
     --border: 220 15% 20%;
     --input: 220 15% 22%;
     --ring: 175 70% 45%;
+
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 175 70% 45%;
+    --sidebar-primary-foreground: 220 25% 8%;
+    --sidebar-accent: 220 20% 18%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 175 70% 45%;
   }
 }
 
