@@ -4,6 +4,7 @@ import { OrbitControls, Sparkles, Float, Html } from '@react-three/drei';
 import * as THREE from 'three';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, FlaskConical } from 'lucide-react';
+import PartsDropdown from './PartsDropdown';
 
 interface PartInfo {
   id: string;
@@ -466,6 +467,13 @@ export default function InteractiveFlaskModel() {
           maxPolarAngle={Math.PI / 2}
         />
       </Canvas>
+
+      {/* Parts Dropdown */}
+      <PartsDropdown
+        parts={flaskPartsInfo}
+        selectedPart={selectedPart}
+        onSelectPart={setSelectedPart}
+      />
 
       <AnimatePresence>
         {selectedPart && (

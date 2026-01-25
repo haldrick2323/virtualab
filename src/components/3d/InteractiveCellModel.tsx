@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
 import { X, ZoomIn, Info } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PartsDropdown from './PartsDropdown';
 
 // Part information data
 interface PartInfo {
@@ -777,6 +778,13 @@ export default function InteractiveCellModel({ color = '#fb7185' }: InteractiveC
       </Canvas>
 
       {/* Instructions */}
+      {/* Parts Dropdown */}
+      <PartsDropdown
+        parts={cellPartsInfo}
+        selectedPart={selectedPart}
+        onSelectPart={setSelectedPart}
+      />
+
       <AnimatePresence>
         {!selectedPart && (
           <motion.div

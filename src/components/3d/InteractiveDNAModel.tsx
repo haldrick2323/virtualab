@@ -4,6 +4,7 @@ import { OrbitControls, Sparkles, Html, Trail } from '@react-three/drei';
 import * as THREE from 'three';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Dna } from 'lucide-react';
+import PartsDropdown from './PartsDropdown';
 
 interface PartInfo {
   id: string;
@@ -373,6 +374,13 @@ export default function InteractiveDNAModel() {
           autoRotateSpeed={0.5}
         />
       </Canvas>
+
+      {/* Parts Dropdown */}
+      <PartsDropdown
+        parts={dnaPartsInfo}
+        selectedPart={selectedPart}
+        onSelectPart={setSelectedPart}
+      />
 
       <AnimatePresence>
         {selectedPart && (

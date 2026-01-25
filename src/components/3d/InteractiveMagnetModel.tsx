@@ -4,6 +4,7 @@ import { OrbitControls, Sparkles, Html, Trail } from '@react-three/drei';
 import * as THREE from 'three';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Magnet } from 'lucide-react';
+import PartsDropdown from './PartsDropdown';
 
 interface PartInfo {
   id: string;
@@ -483,6 +484,13 @@ export default function InteractiveMagnetModel() {
           maxDistance={12}
         />
       </Canvas>
+
+      {/* Parts Dropdown */}
+      <PartsDropdown
+        parts={magnetPartsInfo}
+        selectedPart={selectedPart}
+        onSelectPart={setSelectedPart}
+      />
 
       <AnimatePresence>
         {selectedPart && (

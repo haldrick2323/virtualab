@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
 import { X, ZoomIn, Info } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PartsDropdown from './PartsDropdown';
 
 // Part information data
 interface PartInfo {
@@ -478,6 +479,13 @@ export default function InteractiveAtomModel() {
           <Environment preset="apartment" />
         </Suspense>
       </Canvas>
+
+      {/* Parts Dropdown */}
+      <PartsDropdown
+        parts={atomPartsInfo}
+        selectedPart={selectedPart}
+        onSelectPart={setSelectedPart}
+      />
 
       <AnimatePresence>
         {!selectedPart && (
