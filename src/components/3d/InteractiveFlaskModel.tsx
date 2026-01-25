@@ -332,11 +332,11 @@ function CameraController({ selectedPart }: { selectedPart: string | null }) {
   const cameraRef = useRef<THREE.Vector3>(new THREE.Vector3(3, 2, 3));
   
   const partPositions: Record<string, THREE.Vector3> = {
-    flask: new THREE.Vector3(2, 1.5, 2),
-    liquid: new THREE.Vector3(1.5, 1, 1.5),
-    bubbles: new THREE.Vector3(1.5, 1.2, 1.5),
-    burner: new THREE.Vector3(2, 0, 2),
-    flame: new THREE.Vector3(1.5, 0.5, 1.5),
+    flask: new THREE.Vector3(1.2, 1, 1.2),
+    liquid: new THREE.Vector3(0.8, 0.6, 0.8),
+    bubbles: new THREE.Vector3(0.8, 0.8, 0.8),
+    burner: new THREE.Vector3(1.2, 0, 1.2),
+    flame: new THREE.Vector3(0.8, 0.3, 0.8),
   };
 
   useFrame(({ camera }) => {

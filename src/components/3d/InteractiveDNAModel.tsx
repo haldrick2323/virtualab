@@ -266,12 +266,12 @@ function CameraController({ selectedPart }: { selectedPart: string | null }) {
   const cameraRef = useRef<THREE.Vector3>(new THREE.Vector3(4, 0, 4));
   
   const partPositions: Record<string, THREE.Vector3> = {
-    backbone: new THREE.Vector3(2.5, 1, 2.5),
-    adenine: new THREE.Vector3(2, 0, 2),
-    thymine: new THREE.Vector3(2, 0, 2),
-    guanine: new THREE.Vector3(2, 0.5, 2),
-    cytosine: new THREE.Vector3(2, 0.5, 2),
-    helix: new THREE.Vector3(5, 0, 5),
+    backbone: new THREE.Vector3(1.5, 0.6, 1.5),
+    adenine: new THREE.Vector3(1.2, 0, 1.2),
+    thymine: new THREE.Vector3(1.2, 0, 1.2),
+    guanine: new THREE.Vector3(1.2, 0.3, 1.2),
+    cytosine: new THREE.Vector3(1.2, 0.3, 1.2),
+    helix: new THREE.Vector3(3, 0, 3),
   };
 
   useFrame(({ camera }) => {

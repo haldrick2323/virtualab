@@ -316,12 +316,12 @@ function CameraController({ selectedPart }: { selectedPart: string | null }) {
   const cameraRef = useRef<THREE.Vector3>(new THREE.Vector3(0, 2, 8));
   
   const partPositions: Record<string, THREE.Vector3> = {
-    crest: new THREE.Vector3(0, 2, 4),
-    trough: new THREE.Vector3(1.5, 0, 4),
-    amplitude: new THREE.Vector3(-2, 2, 4),
-    wavelength: new THREE.Vector3(0, -1, 5),
-    frequency: new THREE.Vector3(3, 3, 4),
-    medium: new THREE.Vector3(0, 1, 5),
+    crest: new THREE.Vector3(0, 1.5, 2.5),
+    trough: new THREE.Vector3(1, 0, 2.5),
+    amplitude: new THREE.Vector3(-1.5, 1.2, 2.5),
+    wavelength: new THREE.Vector3(0, -0.5, 3),
+    frequency: new THREE.Vector3(2, 2, 2.5),
+    medium: new THREE.Vector3(0, 0.8, 3),
   };
 
   useFrame(({ camera }) => {
