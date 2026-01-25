@@ -330,15 +330,15 @@ function CameraController({
     let camPos = new THREE.Vector3(4, 2.5, 4);
     
     if (selectedPart === 'nucleus' || selectedPart === 'proton' || selectedPart === 'neutron') {
-      camPos = new THREE.Vector3(1.5, 1, 1.5);
+      camPos = new THREE.Vector3(0.8, 0.6, 0.8);
       targetPos = new THREE.Vector3(0, 0.3, 0);
     } else if (selectedPart === 'electron' || selectedPart === 'orbit') {
-      camPos = new THREE.Vector3(3, 2, 3);
+      camPos = new THREE.Vector3(1.8, 1.2, 1.8);
       targetPos = new THREE.Vector3(0, 0.3, 0);
     }
     
-    positionRef.current.lerp(camPos, 0.05);
-    targetRef.current.lerp(targetPos, 0.05);
+    positionRef.current.lerp(camPos, 0.08);
+    targetRef.current.lerp(targetPos, 0.08);
     
     camera.position.copy(positionRef.current);
     camera.lookAt(targetRef.current);

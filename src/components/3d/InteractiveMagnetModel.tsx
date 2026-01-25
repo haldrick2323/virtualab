@@ -376,12 +376,12 @@ function CameraController({ selectedPart }: { selectedPart: string | null }) {
   const cameraRef = useRef<THREE.Vector3>(new THREE.Vector3(5, 3, 5));
   
   const partPositions: Record<string, THREE.Vector3> = {
-    northPole: new THREE.Vector3(3, 1, 2),
-    southPole: new THREE.Vector3(-3, 1, 2),
-    fieldLines: new THREE.Vector3(0, 2, 5),
-    domains: new THREE.Vector3(0, 0.5, 2),
-    compass: new THREE.Vector3(3, 1, 4),
-    current: new THREE.Vector3(0, -1, 6),
+    northPole: new THREE.Vector3(1.8, 0.6, 1.2),
+    southPole: new THREE.Vector3(-1.8, 0.6, 1.2),
+    fieldLines: new THREE.Vector3(0, 1.2, 3),
+    domains: new THREE.Vector3(0, 0.3, 1.2),
+    compass: new THREE.Vector3(1.8, 0.6, 2.5),
+    current: new THREE.Vector3(0, -0.5, 4),
   };
 
   useFrame(({ camera }) => {

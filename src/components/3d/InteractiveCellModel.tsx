@@ -564,15 +564,15 @@ function CameraController({
       ? new THREE.Vector3(...partPositions[selectedPart]).add(new THREE.Vector3(0, 0.2, 0))
       : new THREE.Vector3(0, 0.2, 0);
     
-    const cameraDistance = selectedPart ? 2.5 : 4;
+    const cameraDistance = selectedPart ? 1.2 : 4;
     const cameraOffset = selectedPart 
-      ? new THREE.Vector3(cameraDistance, cameraDistance * 0.6, cameraDistance)
+      ? new THREE.Vector3(cameraDistance, cameraDistance * 0.5, cameraDistance)
       : new THREE.Vector3(4, 2.5, 4);
     
     const newCameraPos = targetPosition.clone().add(cameraOffset);
     
-    targetRef.current.lerp(targetPosition, 0.05);
-    positionRef.current.lerp(newCameraPos, 0.05);
+    targetRef.current.lerp(targetPosition, 0.08);
+    positionRef.current.lerp(newCameraPos, 0.08);
     
     camera.position.copy(positionRef.current);
     camera.lookAt(targetRef.current);

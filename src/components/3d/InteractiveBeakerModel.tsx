@@ -321,11 +321,11 @@ function CameraController({ selectedPart }: { selectedPart: string | null }) {
   const cameraRef = useRef<THREE.Vector3>(new THREE.Vector3(3, 2, 3));
   
   const partPositions: Record<string, THREE.Vector3> = {
-    beaker: new THREE.Vector3(2, 1.5, 2),
-    solution: new THREE.Vector3(1.8, 1, 1.8),
-    stirrer: new THREE.Vector3(2, 0.5, 2),
-    phStrip: new THREE.Vector3(2.5, 1.5, 1),
-    vapor: new THREE.Vector3(2, 2, 2),
+    beaker: new THREE.Vector3(1.2, 1, 1.2),
+    solution: new THREE.Vector3(1, 0.6, 1),
+    stirrer: new THREE.Vector3(1.2, 0.3, 1.2),
+    phStrip: new THREE.Vector3(1.5, 1, 0.6),
+    vapor: new THREE.Vector3(1.2, 1.5, 1.2),
   };
 
   useFrame(({ camera }) => {
