@@ -4,6 +4,7 @@ import { OrbitControls, Sparkles, Float, Html } from '@react-three/drei';
 import * as THREE from 'three';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Leaf } from 'lucide-react';
+import PartsDropdown from './PartsDropdown';
 
 interface PartInfo {
   id: string;
@@ -411,6 +412,13 @@ export default function InteractiveMoleculeModel() {
           maxDistance={10}
         />
       </Canvas>
+
+      {/* Parts Dropdown */}
+      <PartsDropdown
+        parts={moleculePartsInfo}
+        selectedPart={selectedPart}
+        onSelectPart={setSelectedPart}
+      />
 
       <AnimatePresence>
         {selectedPart && (

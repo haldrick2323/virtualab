@@ -4,6 +4,7 @@ import { OrbitControls, Sparkles, Html, Line } from '@react-three/drei';
 import * as THREE from 'three';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Waves } from 'lucide-react';
+import PartsDropdown from './PartsDropdown';
 
 interface PartInfo {
   id: string;
@@ -420,6 +421,13 @@ export default function InteractiveWaveModel() {
           maxDistance={12}
         />
       </Canvas>
+
+      {/* Parts Dropdown */}
+      <PartsDropdown
+        parts={wavePartsInfo}
+        selectedPart={selectedPart}
+        onSelectPart={setSelectedPart}
+      />
 
       <AnimatePresence>
         {selectedPart && (

@@ -4,6 +4,7 @@ import { OrbitControls, Sparkles, Float, Html, RoundedBox } from '@react-three/d
 import * as THREE from 'three';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Beaker } from 'lucide-react';
+import PartsDropdown from './PartsDropdown';
 
 interface PartInfo {
   id: string;
@@ -450,6 +451,13 @@ export default function InteractiveBeakerModel() {
           maxPolarAngle={Math.PI / 2}
         />
       </Canvas>
+
+      {/* Parts Dropdown */}
+      <PartsDropdown
+        parts={beakerPartsInfo}
+        selectedPart={selectedPart}
+        onSelectPart={setSelectedPart}
+      />
 
       <AnimatePresence>
         {selectedPart && (
