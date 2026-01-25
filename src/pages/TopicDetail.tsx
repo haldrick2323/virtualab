@@ -3,8 +3,10 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, BookOpen, Lightbulb, FlaskConical, Sparkles, FileText } from 'lucide-react';
 import { getTopic, getSubtopic } from '@/data/topics';
 import InteractiveModelWrapper from '@/components/3d/InteractiveModelWrapper';
+import VideoPlayer from '@/components/VideoPlayer';
 import { Button } from '@/components/ui/button';
 import Quiz from '@/components/Quiz';
+
 export default function TopicDetail() {
   const { topicId, subtopicId } = useParams<{ topicId: string; subtopicId: string }>();
   const navigate = useNavigate();
@@ -83,6 +85,13 @@ export default function TopicDetail() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-xl mx-auto lg:mx-0 space-y-8"
           >
+            {/* Educational Video */}
+            <VideoPlayer 
+              videoUrl={subtopic.videoUrl}
+              title={subtopic.title}
+              color={subtopic.color}
+            />
+
             {/* Overview */}
             <div className="glass-card p-6">
               <div className="flex items-center gap-3 mb-4">

@@ -15,6 +15,7 @@ export interface Subtopic {
   funFact: string;
   modelType: '3d-beaker' | '3d-atom' | '3d-dna' | '3d-molecule' | '3d-cell' | '3d-wave' | '3d-magnet' | '3d-flask';
   quiz: QuizQuestion[];
+  videoUrl?: string;
 }
 
 export interface Topic {
@@ -116,7 +117,8 @@ Energy changes accompany all chemical reactions. Exothermic reactions release en
             correctAnswer: 1,
             explanation: 'In a decomposition reaction, a single complex substance breaks down into two or more simpler substances. For example, water can decompose into hydrogen and oxygen gases.'
           }
-        ]
+        ],
+        videoUrl: 'https://www.youtube.com/watch?v=8m6RtOpqvtU'
       },
       {
         id: 'acids-and-bases',
@@ -200,7 +202,8 @@ The environmental impact of acids extends beyond the laboratory. Acid rain, form
             correctAnswer: 1,
             explanation: 'Acid rain forms when sulfur dioxide and nitrogen oxides (mainly from burning fossil fuels) react with atmospheric water to form sulfuric and nitric acids, which then fall as precipitation.'
           }
-        ]
+        ],
+        videoUrl: 'https://www.youtube.com/watch?v=pIyTwH0c0qg'
       },
       {
         id: 'solutions-mixtures',
@@ -284,7 +287,8 @@ Separation techniques exploit the physical properties of mixture components. Fil
             correctAnswer: 1,
             explanation: 'Colloids are mixtures where particles are larger than those in true solutions (1-1000 nm) but small enough that they don\'t settle out due to gravity. Examples include milk, fog, and mayonnaise.'
           }
-        ]
+        ],
+        videoUrl: 'https://www.youtube.com/watch?v=Jo2BHU8RDRI'
       },
     ],
   },
@@ -377,7 +381,8 @@ Mitochondria deserve special attention as the powerhouses of the cell, generatin
             correctAnswer: 1,
             explanation: 'Cell theory states that all cells arise from pre-existing cells through cell division. This principle disproved the old idea of spontaneous generation and is fundamental to understanding life and reproduction.'
           }
-        ]
+        ],
+        videoUrl: 'https://www.youtube.com/watch?v=URUJD5NEXC8'
       },
       {
         id: 'photosynthesis',
@@ -461,7 +466,8 @@ The ecological significance of photosynthesis cannot be overstated. It forms the
             correctAnswer: 2,
             explanation: 'The Calvin cycle (light-independent reactions) uses ATP and NADPH from the light reactions to fix carbon dioxide into organic molecules, eventually producing glucose. This occurs in the stroma of chloroplasts.'
           }
-        ]
+        ],
+        videoUrl: 'https://www.youtube.com/watch?v=sQK3Yr4Sc_k'
       },
       {
         id: 'genetics',
@@ -545,7 +551,8 @@ Mutations are changes in DNA sequence that can arise from replication errors, ra
             correctAnswer: 1,
             explanation: 'Mutations are changes in DNA sequence. They can be harmful (causing diseases), beneficial (providing advantages), or neutral (having no effect). Beneficial mutations are the raw material for evolution.'
           }
-        ]
+        ],
+        videoUrl: 'https://www.youtube.com/watch?v=8kK2zwjRV0M'
       },
     ],
   },
@@ -638,7 +645,8 @@ Friction is a force that opposes motion between surfaces in contact. While often
             correctAnswer: 2,
             explanation: 'Static friction acts on stationary objects and prevents them from starting to move. It must be overcome before an object can begin moving. Once moving, kinetic friction takes over.'
           }
-        ]
+        ],
+        videoUrl: 'https://www.youtube.com/watch?v=kKKM8Y-u7ds'
       },
       {
         id: 'electricity-magnetism',
@@ -722,7 +730,8 @@ Electromagnets are created by passing electric current through a coiled wire, us
             correctAnswer: 1,
             explanation: 'An electromagnet\'s strength can be increased by increasing the current flowing through it, adding more coils of wire, or using a better core material (like soft iron). More current and more coils = stronger magnetic field.'
           }
-        ]
+        ],
+        videoUrl: 'https://www.youtube.com/watch?v=TKF6nFzpHBU'
       },
       {
         id: 'waves-sound',
@@ -806,7 +815,8 @@ The Doppler effect explains why a siren sounds higher pitched as it approaches a
             correctAnswer: 1,
             explanation: 'Humans typically hear frequencies from about 20 Hz to 20,000 Hz (20 kHz). This range decreases with age. Sounds below 20 Hz are infrasound; above 20,000 Hz are ultrasound.'
           }
-        ]
+        ],
+        videoUrl: 'https://www.youtube.com/watch?v=0MkKfAslOXE'
       },
     ],
   },
@@ -899,7 +909,8 @@ The strong nuclear force holds the nucleus together despite the electromagnetic 
             correctAnswer: 1,
             explanation: 'Protons and neutrons are made of quarks. Protons contain 2 up quarks and 1 down quark. Neutrons contain 1 up quark and 2 down quarks. Quarks are held together by the strong force mediated by gluons.'
           }
-        ]
+        ],
+        videoUrl: 'https://www.youtube.com/watch?v=LhveTGblGHY'
       },
       {
         id: 'electron-orbitals',
@@ -983,7 +994,8 @@ Valence electrons—those in the outermost energy level—determine an atom's ch
             correctAnswer: 1,
             explanation: 'Pauli\'s exclusion principle states that each orbital can hold a maximum of 2 electrons, and they must have opposite spins (one spin up, one spin down). No two electrons can have identical quantum numbers.'
           }
-        ]
+        ],
+        videoUrl: 'https://www.youtube.com/watch?v=K7xpLMQdpWE'
       },
       {
         id: 'radioactivity',
@@ -1067,7 +1079,8 @@ Radioactivity has numerous applications. Medical imaging uses radioactive tracer
             correctAnswer: 2,
             explanation: 'Radioactive decay occurs because some nuclei have unstable configurations of protons and neutrons. These nuclei spontaneously emit radiation to achieve a more stable arrangement. The process is random and unaffected by external conditions like temperature or pressure.'
           }
-        ]
+        ],
+        videoUrl: 'https://www.youtube.com/watch?v=oFNdQYMJgT0'
       },
     ],
   },
