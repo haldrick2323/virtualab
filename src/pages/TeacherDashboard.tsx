@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Plus, Trash2, BookOpen, LogOut, ArrowLeft, FileText } from 'lucide-react';
+import { Plus, Trash2, BookOpen, LogOut, ArrowLeft, FileText, Gamepad2, ClipboardList } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -127,6 +127,12 @@ export default function TeacherDashboard() {
           <h1 className="font-display text-xl font-bold text-foreground">Teacher Dashboard</h1>
         </div>
         <div className="flex gap-2">
+          <Button variant="outline" size="sm" onClick={() => navigate('/create-quiz')} className="gap-1">
+            <Gamepad2 className="w-4 h-4" /> Live Quiz
+          </Button>
+          <Button variant="outline" size="sm" onClick={() => navigate('/create-assignment')} className="gap-1">
+            <ClipboardList className="w-4 h-4" /> Assignment
+          </Button>
           <Button variant="ghost" onClick={() => navigate('/')} className="gap-2 text-muted-foreground">
             <ArrowLeft className="w-4 h-4" /> Student View
           </Button>

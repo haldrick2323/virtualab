@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Microscope, LogOut, LogIn, BookOpen } from 'lucide-react';
+import { Microscope, LogOut, LogIn, BookOpen, Gamepad2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import LabScene from '@/components/3d/LabScene';
 import TopicCard from '@/components/TopicCard';
@@ -19,6 +19,9 @@ export default function Index() {
       <div className="absolute top-4 right-4 z-30 flex gap-2">
         {user ? (
           <>
+            <Button variant="outline" size="sm" onClick={() => navigate('/join')} className="gap-1">
+              <Gamepad2 className="w-4 h-4" /> Join Game
+            </Button>
             {role === 'teacher' && (
               <Button variant="outline" size="sm" onClick={() => navigate('/teacher')} className="gap-1">
                 <BookOpen className="w-4 h-4" /> Dashboard
@@ -29,9 +32,14 @@ export default function Index() {
             </Button>
           </>
         ) : (
-          <Button variant="outline" size="sm" onClick={() => navigate('/auth')} className="gap-1">
-            <LogIn className="w-4 h-4" /> Sign In
-          </Button>
+          <>
+            <Button variant="outline" size="sm" onClick={() => navigate('/join')} className="gap-1">
+              <Gamepad2 className="w-4 h-4" /> Join Game
+            </Button>
+            <Button variant="outline" size="sm" onClick={() => navigate('/auth')} className="gap-1">
+              <LogIn className="w-4 h-4" /> Sign In
+            </Button>
+          </>
         )}
       </div>
 
