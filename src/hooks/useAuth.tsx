@@ -92,8 +92,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     if (data?.error) {
-      // If role already assigned, update local state with existing role
-      if (data.role) setRole(data.role as AppRole);
       return { error: data.error };
     }
 

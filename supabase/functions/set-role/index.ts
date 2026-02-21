@@ -6,17 +6,29 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+const MAX_BODY_SIZE = 1024; // 1KB max
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
+  const jsonHeaders = { ...corsHeaders, "Content-Type": "application/json" };
+
   try {
+    // Only allow POST
+    if (req.method !== "POST") {
+      return new Response(JSON.stringify({ error: "Method not allowed" }), {
+        status: 405,
+        headers: jsonHeaders,
+      });
+    }
+
     const authHeader = req.headers.get("Authorization");
     if (!authHeader?.startsWith("Bearer ")) {
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
         status: 401,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        headers: jsonHeaders,
       });
     }
 
@@ -31,17 +43,44 @@ Deno.serve(async (req) => {
     if (claimsError || !claimsData?.claims) {
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
         status: 401,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        headers: jsonHeaders,
       });
     }
 
     const userId = claimsData.claims.sub;
 
-    const { role } = await req.json();
-    if (role !== "student" && role !== "teacher") {
-      return new Response(JSON.stringify({ error: "Invalid role" }), {
+    // Validate request body size
+    const contentLength = req.headers.get("content-length");
+    if (contentLength && parseInt(contentLength) > MAX_BODY_SIZE) {
+      return new Response(JSON.stringify({ error: "Invalid request" }), {
         status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        headers: jsonHeaders,
+      });
+    }
+
+    // Parse and validate body
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return new Response(JSON.stringify({ error: "Invalid request" }), {
+        status: 400,
+        headers: jsonHeaders,
+      });
+    }
+
+    if (!body || typeof body !== "object" || Array.isArray(body)) {
+      return new Response(JSON.stringify({ error: "Invalid request" }), {
+        status: 400,
+        headers: jsonHeaders,
+      });
+    }
+
+    const { role } = body as Record<string, unknown>;
+    if (typeof role !== "string" || (role !== "student" && role !== "teacher")) {
+      return new Response(JSON.stringify({ error: "Invalid request" }), {
+        status: 400,
+        headers: jsonHeaders,
       });
     }
 
@@ -59,13 +98,10 @@ Deno.serve(async (req) => {
       .maybeSingle();
 
     if (existing) {
-      // User already has a role - don't allow changing it
+      // Generic message - don't reveal system state details
       return new Response(
-        JSON.stringify({ error: "Role already assigned", role: existing.role }),
-        {
-          status: 409,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
+        JSON.stringify({ error: "Cannot modify role" }),
+        { status: 400, headers: jsonHeaders }
       );
     }
 
@@ -75,20 +111,22 @@ Deno.serve(async (req) => {
       .insert({ user_id: userId, role });
 
     if (insertError) {
-      return new Response(JSON.stringify({ error: "Failed to assign role" }), {
+      console.error("Role assignment failed:", insertError.message);
+      return new Response(JSON.stringify({ error: "Request failed" }), {
         status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        headers: jsonHeaders,
       });
     }
 
     return new Response(JSON.stringify({ success: true, role }), {
       status: 200,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
+      headers: jsonHeaders,
     });
   } catch (err) {
+    console.error("Unexpected error in set-role:", err);
     return new Response(JSON.stringify({ error: "Internal server error" }), {
       status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
+      headers: jsonHeaders,
     });
   }
 });
