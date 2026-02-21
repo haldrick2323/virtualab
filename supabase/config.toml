@@ -1,1 +1,4 @@
 project_id = "bnmlctndyvcycfrklzmh"
+
+[functions.set-role]
+verify_jwt = false

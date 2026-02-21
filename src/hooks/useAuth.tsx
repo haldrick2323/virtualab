@@ -83,27 +83,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const setUserRole = async (newRole: AppRole) => {
     if (!user) return { error: 'Not logged in' };
     
-    // Check if role already exists
-    const { data: existing } = await supabase
-      .from('user_roles')
-      .select('id')
-      .eq('user_id', user.id)
-      .maybeSingle();
+    const { data, error } = await supabase.functions.invoke('set-role', {
+      body: { role: newRole },
+    });
 
-    if (existing) {
-      const { error } = await supabase
-        .from('user_roles')
-        .update({ role: newRole })
-        .eq('user_id', user.id);
-      if (!error) setRole(newRole);
-      return { error };
-    } else {
-      const { error } = await supabase
-        .from('user_roles')
-        .insert({ user_id: user.id, role: newRole });
-      if (!error) setRole(newRole);
-      return { error };
+    if (error) {
+      return { error: error.message || 'Failed to set role' };
     }
+
+    if (data?.error) {
+      // If role already assigned, update local state with existing role
+      if (data.role) setRole(data.role as AppRole);
+      return { error: data.error };
+    }
+
+    setRole(newRole);
+    return { error: null };
   };
 
   return (
