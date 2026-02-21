@@ -263,8 +263,20 @@ export default function TeacherDashboard() {
               <Textarea value={topicForm.content} onChange={(e) => setTopicForm({ ...topicForm, content: e.target.value })} placeholder="Full educational content..." rows={6} />
             </div>
             <div>
-              <Label>Video URL (optional)</Label>
-              <Input value={topicForm.video_url} onChange={(e) => setTopicForm({ ...topicForm, video_url: e.target.value })} placeholder="https://youtube.com/watch?v=..." />
+              <Label>YouTube Video URL (optional)</Label>
+              <Input 
+                value={topicForm.video_url} 
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === '' || /^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//.test(val)) {
+                    setTopicForm({ ...topicForm, video_url: val });
+                  }
+                }} 
+                placeholder="https://youtube.com/watch?v=..." 
+              />
+              {topicForm.video_url && !/^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//.test(topicForm.video_url) && (
+                <p className="text-xs text-destructive mt-1">Must be a YouTube URL</p>
+              )}
             </div>
             <div>
               <Label>Source / Credit (optional)</Label>
