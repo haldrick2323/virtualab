@@ -4,9 +4,9 @@ import { ArrowLeft, BookOpen, Lightbulb, FlaskConical, Sparkles, FileText } from
 import { getTopic, getSubtopic } from '@/data/topics';
 import InteractiveModelWrapper from '@/components/3d/InteractiveModelWrapper';
 import VideoPlayer from '@/components/VideoPlayer';
-import SourceCredits from '@/components/SourceCredits';
 import { Button } from '@/components/ui/button';
 import Quiz from '@/components/Quiz';
+
 export default function TopicDetail() {
   const { topicId, subtopicId } = useParams<{ topicId: string; subtopicId: string }>();
   const navigate = useNavigate();
@@ -203,9 +203,6 @@ export default function TopicDetail() {
                 />
               </motion.div>
             )}
-
-            {/* Source Credits */}
-            <SourceCredits topicTitle={subtopic.title} color={subtopic.color} />
 
             {/* Navigation hint */}
             <p className="text-center text-sm text-muted-foreground pt-4">

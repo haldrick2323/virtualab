@@ -1,48 +1,16 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Microscope, LogOut, LogIn, BookOpen, Gamepad2 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Microscope } from 'lucide-react';
 import LabScene from '@/components/3d/LabScene';
 import TopicCard from '@/components/TopicCard';
 import SubtopicList from '@/components/SubtopicList';
 import { topics, Topic } from '@/data/topics';
-import { useAuth } from '@/hooks/useAuth';
-import { Button } from '@/components/ui/button';
+
 export default function Index() {
   const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null);
-  const { user, signOut, role } = useAuth();
-  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Auth header */}
-      <div className="absolute top-4 right-4 z-30 flex gap-2">
-        {user ? (
-          <>
-            <Button variant="outline" size="sm" onClick={() => navigate('/join')} className="gap-1">
-              <Gamepad2 className="w-4 h-4" /> Join Game
-            </Button>
-            {role === 'teacher' && (
-              <Button variant="outline" size="sm" onClick={() => navigate('/teacher')} className="gap-1">
-                <BookOpen className="w-4 h-4" /> Dashboard
-              </Button>
-            )}
-            <Button variant="ghost" size="sm" onClick={signOut} className="gap-1">
-              <LogOut className="w-4 h-4" /> Sign Out
-            </Button>
-          </>
-        ) : (
-          <>
-            <Button variant="outline" size="sm" onClick={() => navigate('/join')} className="gap-1">
-              <Gamepad2 className="w-4 h-4" /> Join Game
-            </Button>
-            <Button variant="outline" size="sm" onClick={() => navigate('/auth')} className="gap-1">
-              <LogIn className="w-4 h-4" /> Sign In
-            </Button>
-          </>
-        )}
-      </div>
-
       {/* Laboratory-themed background */}
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-slate-100 via-slate-50 to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
         {/* Subtle grid pattern like lab tiles */}
